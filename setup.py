@@ -1,7 +1,7 @@
 # pylint: disable=missing-module-docstring
 import re
 
-from pkg_resources import get_distribution, DistributionNotFound
+from importlib.metadata import distribution, PackageNotFoundError
 from setuptools import setup, find_packages
 
 long_description = """A library for image augmentation in machine learning experiments, particularly convolutional
@@ -33,9 +33,9 @@ def check_alternative_installation(install_require, alternative_install_requires
     for alternative_install_require in alternative_install_requires:
         try:
             alternative_pkg_name = re.split(r"[!<>=]", alternative_install_require)[0]
-            get_distribution(alternative_pkg_name)
+            distribution(alternative_pkg_name)
             return str(alternative_install_require)
-        except DistributionNotFound:
+        except PackageNotFoundError:
             continue
 
     return str(install_require)
@@ -57,12 +57,11 @@ def get_install_requirements(main_requires, alternative_requires):
 INSTALL_REQUIRES = get_install_requirements(INSTALL_REQUIRES, ALT_INSTALL_REQUIRES)
 
 setup(
-    name="imgaug",
-    version="0.4.0",
+    name="pyimgaug",
+    version="0.5.0",
     author="Alexander Jung",
     author_email="kontakt@ajung.name",
     url="https://github.com/aleju/imgaug",
-    download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
     install_requires=INSTALL_REQUIRES,
     packages=find_packages(),
     include_package_data=True,
