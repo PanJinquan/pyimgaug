@@ -1,6 +1,6 @@
 # pyimgaug
 
-pyimgaug是[imgaug](https://github.com/aleju/imgaug)升级版，完全兼容imgaug，且修复了版本升级等异常问题,使用方法与imgaug一致。
+[pyimgaug](https://github.com/PanJinquan/pyimgaug)是[imgaug](https://github.com/aleju/imgaug)升级版，完全兼容imgaug，且修复了版本升级等异常问题,使用方法与imgaug一致。
 
 ## 安装方法
 - pip安装
